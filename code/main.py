@@ -1,6 +1,9 @@
 import pygame, sys, time
 from settings import *
 from sprites import BG, Ground, Plane, Obstacle
+from os import listdir
+from os.path import join, isfile
+
 
 class Game:
 	def __init__(self):
@@ -17,7 +20,7 @@ class Game:
 		self.collisionSprites = pygame.sprite.Group()
 
 		# scale factor
-		bgHeight = pygame.image.load('/graphics/environment/background.png').get_height()
+		bgHeight = pygame.image.load(join("graphics","environment","background.png")).get_height()
 		self.scaleFactor = WINDOW_HEIGHT / bgHeight
 
 		# sprite setup
@@ -30,22 +33,22 @@ class Game:
 		pygame.time.set_timer(self.obstacleTimer,1400)
 
 		# text
-		self.font = pygame.font.Font('../graphics/font/BD_Cartoon_Shout.ttf',30)
+		self.font = pygame.font.Font(join("graphics","font","BD_Cartoon_Shout.ttf"),30)
 		self.score = 0
 		self.startOffset = 0
 
 		# menu
-		self.menuSurf = pygame.image.load('../graphics/ui/menu.png').convert_alpha()
+		self.menuSurf = pygame.image.load(join("graphics","ui","menu.png")).convert_alpha()
 		self.menuRect = self.menuSurf.get_rect(center = (WINDOW_WIDTH / 2, WINDOW_WIDTH / 2))
 		
 		# music 
-		self.music = pygame.mixer.Sound('../sounds/music.wav')
+		self.music = pygame.mixer.Sound(join("sounds","music.wav"))
 		self.music.play(loops = -1)
 
 	def collisions(self):
 		if pygame.sprite.spritecollide(self.plane,self.collisionSprites,False,pygame.sprite.collide_mask) or self.plane.rect.top <= 0:
 			for sprite in self.collisionSprites.sprites():
-				if sprite.sprite_type == 'obstacle':
+				if sprite.sprite_type == 'obstacle': # sprite_type = 'obstacle'
 					sprite.kill()
 			self.active = False
 			self.plane.kill()
@@ -100,7 +103,10 @@ class Game:
 			# self.clock.tick(FRAMERATE)
 
 
-
 if __name__ == '__main__':
 	game = Game()
 	game.run()
+
+
+
+	   
