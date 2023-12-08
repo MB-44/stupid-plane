@@ -14,7 +14,7 @@ A simple and silly Pygame project that almost like a Flappy bird
 ## Installation
 1. Clone the repository to your local machine:
    - ```bash
-     git clone https://github.com/Menath-Baddegama/stupid-plane.git
+     git clone https://github.com/MB-44/stupid-plane.git
 2. Navigate to the project directory
    - ```bash
      cd stupid-plane
