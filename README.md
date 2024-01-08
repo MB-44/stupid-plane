@@ -1,4 +1,4 @@
-# Stupid Plane
+# Stupid Plane 🛩️🪂
 
 A simple and silly Pygame project that almost like a Flappy bird
 
